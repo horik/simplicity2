@@ -26,7 +26,15 @@ if (is_home() && !is_paged()) : ?>
 <?php endif ?>
 <?php endif; ?>
 <?php //投稿ページにMETAタグを挿入するとき
-if ( is_singular() && is_meta_description_insert() ):
+//=====================================
+// profile用のdescription
+//=====================================
+if (in_category('profile')):
+  echo '<meta name="description" content="' . get_profile_description() . '" />' . PHP_EOL;
+elseif ( is_singular() && is_meta_description_insert() ):
+//=====================================
+// profile用のdescriptionここまで
+//=====================================
   $page_str = null;
   if ( get_multi_page_number() > 1 ) {
     $page_str = ' - ページ '.get_multi_page_number();
